@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+    <!--因为加载这个远程配置文件，所以会导致本地配置文件冲突，所以不能配置本地配置文件-->
+    <bean id="propertyPlaceholderConfigurer" class="com.huiju.conf.DisconfPropertyPlaceholderConfigurer"
+          lazy-init="false">
+    </bean>
+    <!--扫描service 由于有一些关于权限验证的包在 jar 包中-->
+    <context:component-scan base-package="com.huiju"/>
+    <aop:aspectj-autoproxy/>
+</beans>
